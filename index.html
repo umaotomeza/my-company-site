@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式会社ブライトパス | コンサルティング・業務支援</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== 基本設定 ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy:      #1a2e4a;
+      --navy-mid:  #2b4570;
+      --navy-light:#3d6494;
+      --accent:    #c8a96e;
+      --gray-dark: #3d3d3d;
+      --gray-mid:  #6b7280;
+      --gray-light:#f0f2f5;
+      --white:     #ffffff;
+      --border:    #dce3ed;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--gray-dark);
+      background: var(--white);
+    }
+
+    /* ===== ナビゲーション ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark span {
+      color: var(--accent);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-mid);
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--navy); }
+
+    .nav-cta {
+      background: var(--navy) !important;
+      color: var(--white) !important;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--navy-mid) !important; }
+
+    /* ===== ヒーローセクション ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      color: var(--white);
+      padding: 100px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(200, 169, 110, 0.25);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(26px, 5vw, 44px);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: clamp(15px, 2.5vw, 18px);
+      line-height: 1.9;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 44px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 44px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== 共通セクションスタイル ===== */
+    section {
+      padding: 88px 24px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--navy-light);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--gray-mid);
+      line-height: 1.9;
+      max-width: 580px;
+      margin-bottom: 56px;
+    }
+
+    /* ===== サービス ===== */
+    #services { background: var(--gray-light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(26,46,74,0.12);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--gray-mid);
+      line-height: 1.85;
+    }
+
+    /* ===== 料金 ===== */
+    #pricing { background: var(--white); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .pricing-card {
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--navy-light);
+      box-shadow: 0 6px 28px rgba(26,46,74,0.1);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 8px 36px rgba(26,46,74,0.22);
+    }
+
+    .plan-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .plan-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card.featured .plan-name { color: var(--white); }
+
+    .plan-price {
+      font-size: 40px;
+      font-weight: 700;
+      font-family: 'Noto Serif JP', serif;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .pricing-card.featured .plan-price { color: var(--accent); }
+
+    .plan-unit {
+      font-size: 14px;
+      color: var(--gray-mid);
+      margin-bottom: 24px;
+    }
+
+    .pricing-card.featured .plan-unit { color: rgba(255,255,255,0.65); }
+
+    .plan-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .plan-features li {
+      font-size: 14px;
+      color: var(--gray-dark);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pricing-card.featured .plan-features li {
+      color: rgba(255,255,255,0.85);
+      border-bottom-color: rgba(255,255,255,0.15);
+    }
+
+    .check { color: var(--accent); font-weight: 700; }
+
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 13px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .plan-btn-outline {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+
+    .plan-btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .plan-btn-fill {
+      background: var(--accent);
+      color: var(--navy);
+    }
+
+    .plan-btn-fill:hover { opacity: 0.88; }
+
+    .pricing-note {
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--gray-mid);
+      text-align: center;
+      background: var(--gray-light);
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    /* ===== 会社概要 ===== */
+    #about { background: var(--gray-light); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 16px;
+      padding: 48px 40px;
+      color: var(--white);
+    }
+
+    .about-visual h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .about-visual p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.9;
+    }
+
+    .about-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .about-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-table th {
+      width: 34%;
+      padding: 18px 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .about-table td {
+      padding: 18px 0 18px 16px;
+      font-size: 15px;
+      color: var(--gray-dark);
+      vertical-align: top;
+    }
+
+    /* ===== お問い合わせ ===== */
+    #contact { background: var(--navy); }
+
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #contact .section-label { color: var(--accent); }
+    #contact .section-title { color: var(--white); }
+
+    .contact-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      margin-bottom: 48px;
+    }
+
+    .contact-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 48px 40px;
+    }
+
+    .mail-icon {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+
+    .contact-box h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .mail-link {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+
+    .mail-link:hover { opacity: 0.88; }
+
+    .contact-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      background: #0f1c2d;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+    }
+
+    /* ===== スマホ対応 ===== */
+    @media (max-width: 768px) {
+      section { padding: 64px 20px; }
+
+      nav { display: none; }
+
+      .hero { padding: 72px 20px 60px; }
+
+      .hero-stats { gap: 28px; }
+
+      .stat-num { font-size: 28px; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .contact-box {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark"><span>BP</span></div>
+      <span class="logo-text">株式会社ブライトパス</span>
+    </a>
+    <nav>
+      <a href="#services">サービス</a>
+      <a href="#pricing">料金</a>
+      <a href="#about">会社概要</a>
+      <a href="#contact" class="nav-cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== ヒーロー ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">BRIGHT PATH CONSULTING</div>
+    <h1>貴社の課題に、<em>確かな解決策</em>を。<br />信頼と実績で、ともに歩むパートナー。</h1>
+    <p>私たちは中小企業・スタートアップの業務改善・デジタル化・戦略立案を<br />徹底的にサポートします。</p>
+    <a href="#contact" class="hero-btn">無料相談はこちら →</a>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">200<small style="font-size:20px">社+</small></div>
+        <div class="stat-label">支援実績</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">12<small style="font-size:20px">年</small></div>
+        <div class="stat-label">業界経験</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">96<small style="font-size:20px">%</small></div>
+        <div class="stat-label">顧客継続率</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== サービス ===== -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">SERVICES</div>
+    <h2 class="section-title">私たちが提供するサービス</h2>
+    <p class="section-desc">企業の成長フェーズや課題に合わせ、最適なサポートを柔軟に提供します。</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>経営戦略コンサルティング</h3>
+        <p>現状分析から中長期の事業計画策定まで、経験豊富なコンサルタントが貴社の経営課題に真摯に向き合います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>業務のデジタル化支援</h3>
+        <p>紙やExcel中心の業務をシステム化し、作業時間の削減・ミスの防止・情報共有の効率化を実現します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧩</div>
+        <h3>組織・人材マネジメント</h3>
+        <p>採用・評価・育成の仕組みづくりをサポート。社員が活躍しやすい組織体制の構築をお手伝いします。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📢</div>
+        <h3>マーケティング・集客支援</h3>
+        <p>ホームページ改善・SNS活用・広告運用など、予算に合った効果的な集客施策をご提案します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>補助金・助成金申請サポート</h3>
+        <p>活用できる公的支援制度を調査し、申請書類の作成から採択後のフォローまでトータルで支援します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>顧問契約（月次サポート）</h3>
+        <p>継続的な経営相談・数値管理・定期ミーティングを通じて、安心感のある伴走型支援を提供します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 料金 ===== -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">PRICING</div>
+    <h2 class="section-title">料金イメージ</h2>
+    <p class="section-desc">目的や規模に応じてプランをお選びいただけます。詳細はお気軽にご相談ください。</p>
+
+    <div class="pricing-grid">
+      <!-- スタータープラン -->
+      <div class="pricing-card">
+        <div class="plan-name">スタータープラン</div>
+        <div class="plan-price">5<span style="font-size:20px">万円</span></div>
+        <div class="plan-unit">〜 / 月（税別）</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 月1回の経営相談（2時間）</li>
+          <li><span class="check">✓</span> メール相談（無制限）</li>
+          <li><span class="check">✓</span> 現状分析レポート</li>
+          <li><span class="check">✓</span> 課題整理・優先度提案</li>
+        </ul>
+        <a href="#contact" class="plan-btn plan-btn-outline">詳細を問い合わせる</a>
+      </div>
+
+      <!-- スタンダードプラン（おすすめ） -->
+      <div class="pricing-card featured">
+        <div class="plan-badge">✨ 人気No.1</div>
+        <div class="plan-name">スタンダードプラン</div>
+        <div class="plan-price">12<span style="font-size:20px">万円</span></div>
+        <div class="plan-unit">〜 / 月（税別）</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 月2回の訪問 or オンライン</li>
+          <li><span class="check">✓</span> メール・電話相談（無制限）</li>
+          <li><span class="check">✓</span> KPI管理・月次報告書</li>
+          <li><span class="check">✓</span> 施策の実行サポート</li>
+          <li><span class="check">✓</span> 補助金情報の提供</li>
+        </ul>
+        <a href="#contact" class="plan-btn plan-btn-fill">詳細を問い合わせる</a>
+      </div>
+
+      <!-- プレミアムプラン -->
+      <div class="pricing-card">
+        <div class="plan-name">プレミアムプラン</div>
+        <div class="plan-price">25<span style="font-size:20px">万円</span></div>
+        <div class="plan-unit">〜 / 月（税別）</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 週次ミーティング</li>
+          <li><span class="check">✓</span> 専任担当者のアサイン</li>
+          <li><span class="check">✓</span> 経営会議への参加</li>
+          <li><span class="check">✓</span> 実行支援・プロジェクト管理</li>
+        </ul>
+        <a href="#contact" class="plan-btn plan-btn-outline">詳細を問い合わせる</a>
+      </div>
+    </div>
+
+    <p class="pricing-note">
+      ※ 上記はあくまで目安です。単発のスポットコンサルティング（1回 3万円〜）もご用意しています。<br />
+      まずはお気軽にご相談ください。お見積りは無料です。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 会社概要 ===== -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">ABOUT</div>
+    <h2 class="section-title">会社概要</h2>
+    <p class="section-desc">2012年の創業以来、中小企業の成長を支え続けています。</p>
+
+    <div class="about-grid">
+      <div class="about-visual">
+        <h3>私たちのミッション</h3>
+        <p>「すべての企業に、専門家の知恵を。」<br /><br />
+        規模や業種を問わず、どんな会社でも本物のコンサルティングが受けられる社会を目指しています。<br /><br />
+        お客様の課題を自分ごととして捉え、一緒に考え、一緒に動く。それが私たちの流儀です。</p>
+      </div>
+
+      <div>
+        <table class="about-table">
+          <tr>
+            <th>会社名</th>
+            <td>株式会社ブライトパス</td>
+          </tr>
+          <tr>
+            <th>設立</th>
+            <td>2012年4月</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>東京都千代田区丸の内2-1-1<br />サンプルビル 8F</td>
+          </tr>
+          <tr>
+            <th>代表取締役</th>
+            <td>田中 誠一（たなか せいいち）</td>
+          </tr>
+          <tr>
+            <th>従業員数</th>
+            <td>28名（業務委託含む）</td>
+          </tr>
+          <tr>
+            <th>主な取引先</th>
+            <td>製造業・小売業・IT・医療・飲食など</td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td>平日 9:00〜18:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お問い合わせ ===== -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">CONTACT</div>
+    <h2 class="section-title">お問い合わせ</h2>
+    <p class="contact-desc">サービスのご質問、お見積りのご依頼、まずはお気軽にご連絡ください。<br />通常2営業日以内にご返信いたします。</p>
+
+    <div class="contact-box">
+      <div class="mail-icon">✉️</div>
+      <h3>メールでのお問い合わせ</h3>
+      <a href="mailto:info@brightpath-consulting.co.jp" class="mail-link">
+        info@brightpath-consulting.co.jp
+      </a>
+      <p class="contact-note">※ 土日祝日のご連絡は翌営業日以降のご返信となります</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <p>© 2024 株式会社ブライトパス. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
