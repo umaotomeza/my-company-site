@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社リオンヌ | Intelligence · Media · Insight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0c1a2e;
+    --navy-mid: #162340;
+    --navy-light: #1e3055;
+    --gold: #b8955a;
+    --gold-light: #d4b483;
+    --gold-pale: #f5ecd8;
+    --cream: #f8f5ef;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a4a4a;
+    --text-light: #7a7a7a;
+    --border: #ddd8cc;
+    --border-strong: #c8c0b0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    font-size: 15px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(12, 26, 46, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184, 149, 90, 0.25);
+  }
+  .nav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.08em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    font-weight: 300;
+    transition: color 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 7px 18px;
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 2rem 80px;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184,149,90,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,149,90,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(184,149,90,0.05) 100%);
+  }
+  .hero-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.55;
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-title span {
+    color: var(--gold-light);
+  }
+  .hero-subtitle {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 2.1;
+    max-width: 560px;
+    letter-spacing: 0.04em;
+    margin-bottom: 3rem;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    padding: 14px 32px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+  .hero-metrics {
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(184,149,90,0.2);
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .hero-metric-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .hero-metric-label {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 2rem; }
+  .section-inner { max-width: 1160px; margin: 0 auto; }
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-heading {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.02em;
+  }
+  .section-heading-white { color: var(--white); }
+  .section-lead {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 2;
+    max-width: 640px;
+    letter-spacing: 0.03em;
+  }
+  .section-lead-white { color: rgba(255,255,255,0.65); }
+
+  /* ── PHILOSOPHY ── */
+  #philosophy {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 4rem;
+  }
+  .philosophy-visual {
+    position: relative;
+  }
+  .philosophy-quote {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    padding: 2.5rem;
+    border-left: 3px solid var(--gold);
+    background: var(--white);
+  }
+  .philosophy-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 2.1;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--white); }
+  .services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.25s;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: rgba(184,149,90,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .service-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+  .service-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+  .service-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.95;
+    letter-spacing: 0.02em;
+  }
+  .service-divider {
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.2rem 0;
+  }
+
+  /* ── SERVICE DETAIL ── */
+  #service-detail { background: var(--navy); padding: 100px 2rem; }
+  .detail-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .detail-tab {
+    padding: 12px 24px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+  .detail-tab.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+  .detail-tab:hover { color: rgba(255,255,255,0.7); }
+  .detail-panel { display: none; }
+  .detail-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .detail-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+  }
+  .detail-feature {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .detail-feature-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .detail-feature-text {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+  }
+  .detail-strengths {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(184,149,90,0.25);
+    background: rgba(184,149,90,0.04);
+  }
+  .detail-strengths-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .detail-strength-item {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.03em;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    line-height: 1.6;
+  }
+  .detail-strength-item:last-child { border-bottom: none; }
+
+  /* ── COMPANY ── */
+  #company { background: var(--cream); border-top: 1px solid var(--border); }
+  .company-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  .company-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .company-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .company-table tr:first-child { border-top: 1px solid var(--border); }
+  .company-table td {
+    padding: 1.1rem 0;
+    vertical-align: top;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+  .company-table td:first-child {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    width: 130px;
+    padding-right: 2rem;
+  }
+  .company-table td:last-child { color: var(--text-dark); }
+  .company-side-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 2.1;
+    letter-spacing: 0.03em;
+  }
+  .company-side-small {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 2;
+    margin-top: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); }
+  .contact-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-email {
+    display: inline-block;
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,149,90,0.35);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .contact-email:hover { color: var(--white); }
+  .contact-note {
+    margin-top: 1.5rem;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+    line-height: 2;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070e1a;
+    padding: 2.5rem 2rem;
+    border-top: 1px solid rgba(184,149,90,0.15);
+  }
+  .footer-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-copy {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+  .footer-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .philosophy-grid,
+    .company-grid,
+    .services-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+    .detail-panel.active { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-metrics { gap: 2rem; }
+  }
+  @media (max-width: 580px) {
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 1.25rem; }
+    .hero-title { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">L</div>
+      <span class="nav-logo-text">株式会社リオンヌ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">理念</a></li>
+      <li><a href="#services">事業内容</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Intelligence · Media · Insight</div>
+    <h1 class="hero-title">
+      情報と洞察で、<br>
+      <span>社会の深層を照らす。</span>
+    </h1>
+    <p class="hero-subtitle">
+      AI・IT・配信技術をはじめとする新しい知能とメディアを通じて、<br>
+      時代に即した価値を社会に届けます。
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">事業内容を見る</a>
+      <a href="#contact" class="btn-outline">お問い合わせ</a>
+    </div>
+    <div class="hero-metrics">
+      <div>
+        <div class="hero-metric-val">5</div>
+        <div class="hero-metric-label">事業部門</div>
+      </div>
+      <div>
+        <div class="hero-metric-val">OSINT</div>
+        <div class="hero-metric-label">公開情報分析基盤</div>
+      </div>
+      <div>
+        <div class="hero-metric-val">届出済</div>
+        <div class="hero-metric-label">探偵業届出</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="section-inner">
+    <div class="section-label">Philosophy</div>
+    <h2 class="section-heading">私たちの理念</h2>
+    <div class="philosophy-grid">
+      <div class="philosophy-visual">
+        <div class="philosophy-quote">
+          旧来の慣習にとらわれない表現と<br>情報の在り方を創造し、<br>時代に即した価値を<br>社会に届けます。
+        </div>
+      </div>
+      <div>
+        <p class="philosophy-text">
+          株式会社リオンヌは、政治・安全保障・国際情勢を中心とした調査・分析・情報発信を通じて、企業・団体・個人の意思決定と心の整理を支援します。<br><br>
+          公開情報分析（OSINT）を基盤とした専門性と、継続的な情報発信による社会提言を両輪として、社会の複雑な課題に向き合います。情報と洞察の力で、不確かな時代を切り拓く羅針盤となることが、私たちの使命です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro">
+      <div>
+        <div class="section-label">Business Overview</div>
+        <h2 class="section-heading">事業概要</h2>
+      </div>
+      <div>
+        <p class="section-lead">
+          政治・安全保障・国際情勢を中心に、調査・分析・情報発信を通じた多角的な価値提供を行っています。公開情報分析を基盤とした専門性と、継続的な情報発信による社会提言を両輪として、企業・団体・個人の意思決定を支えます。
+        </p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-en">Think Tank</div>
+        <div class="service-divider"></div>
+        <h3 class="service-title">シンクタンク部門</h3>
+        <p class="service-desc">政治・安全保障・国際情勢を中心に、OSINT分析と専門知見を組み合わせた調査・提言サービスを提供。中国・ロシア・共産圏に特化した知見が強みです。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-en">OSINT</div>
+        <div class="service-divider"></div>
+        <h3 class="service-title">OSINT調査部門</h3>
+        <p class="service-desc">公開情報を基盤とした企業・人物の信用調査、SNS解析、海外リスク調査を実施。探偵業届出済みの体制で適法・適正な調査を行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-en">News & Media</div>
+        <div class="service-divider"></div>
+        <h3 class="service-title">ニュース配信部門</h3>
+        <p class="service-desc">YouTube・noteを拠点に、政治・安全保障・社会問題を速報性と分析力の両立で発信。報道では見えにくい背景・構造まで踏み込みます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-en">Imperial Studies</div>
+        <div class="service-divider"></div>
+        <h3 class="service-title">皇室・皇位継承 研究</h3>
+        <p class="service-desc">歴史・制度・政治の三視点から皇位継承問題を冷静に分析。感情論に流されない客観的な論点整理と継続的な情報発信を行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-en">Divination & Counseling</div>
+        <div class="service-divider"></div>
+        <h3 class="service-title">占い・カウンセリング部門</h3>
+        <p class="service-desc">人の悩みや迷いに寄り添い、心の整理と前向きな一歩を支えるサービスを提供。感情や直感にも目を向けながら、安心と気づきをお届けします。</p>
+      </div>
+      <div class="service-card" style="background: var(--navy); cursor: default;">
+        <div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 0.5rem 0 0;">
+          <p style="font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; line-height: 2;">
+            各事業部門の詳細は<br>下記をご覧ください
+          </p>
+          <div style="margin-top: 1rem; width: 28px; height: 1px; background: rgba(184,149,90,0.4);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE DETAIL -->
+<section id="service-detail">
+  <div class="section-inner">
+    <div class="section-label" style="color: var(--gold);">Service Detail</div>
+    <h2 class="section-heading section-heading-white">各部門の詳細</h2>
+
+    <div class="detail-tabs" style="margin-top: 2.5rem;">
+      <div class="detail-tab active" onclick="showTab(0)">シンクタンク</div>
+      <div class="detail-tab" onclick="showTab(1)">OSINT調査</div>
+      <div class="detail-tab" onclick="showTab(2)">ニュース配信</div>
+      <div class="detail-tab" onclick="showTab(3)">皇室研究</div>
+      <div class="detail-tab" onclick="showTab(4)">占い・カウンセリング</div>
+    </div>
+
+    <!-- Panel 0 -->
+    <div class="detail-panel active" id="panel-0">
+      <div>
+        <div class="section-label" style="margin-bottom: 0.5rem;">01 · Think Tank</div>
+        <h3 style="font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 400; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em;">シンクタンク部門</h3>
+        <p style="font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 2; letter-spacing: 0.03em;">政治・安全保障・国際情勢を中心に、公開情報（OSINT）と独自の分析力をもとに、実務に直結する調査・分析サービスを提供します。リスクの可視化と戦略的判断を支える知見を、経営層・関係者に届けます。</p>
+        <div class="detail-features">
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">政治・選挙分析（選挙情勢・候補者・関係団体のリスク整理）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">安全保障・軍事分析（中国・ロシアを中心とした軍事動向）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">中国・共産圏リスク分析（政治・規制・資本・人的ネットワーク）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">影響工作・情報戦分析（外国勢力による世論操作リスク）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">法人・人物調査支援（取引先・関係者の背景・信用リスク）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">経営層向けレポート・ブリーフィング</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="aspect-ratio: 4/3; background: rgba(184,149,90,0.06); border: 1px solid rgba(184,149,90,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(184,149,90,0.3); letter-spacing: 0.05em;">Think Tank</span>
+        </div>
+        <div class="detail-strengths">
+          <div class="detail-strengths-label">強み・特徴</div>
+          <div class="detail-strength-item">政治・安全保障分野の専門分析力</div>
+          <div class="detail-strength-item">中国・ロシア・共産圏領域の豊富な知見</div>
+          <div class="detail-strength-item">公開情報を活用した高精度な調査</div>
+          <div class="detail-strength-item">調査から戦略設計までの一貫対応</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 1 -->
+    <div class="detail-panel" id="panel-1">
+      <div>
+        <div class="section-label" style="margin-bottom: 0.5rem;">02 · OSINT</div>
+        <h3 style="font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 400; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em;">OSINT調査部門</h3>
+        <p style="font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 2; letter-spacing: 0.03em;">公開情報を基盤とした高度な情報収集・分析を通じて、企業・人物・社会情勢に関するリスクの可視化と意思決定支援を行います。SNS解析と国際情勢分析を組み合わせた独自手法を採用しています。</p>
+        <div class="detail-features">
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">企業信用調査（取引先・関係法人の実態・リスク要因の分析）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">人物調査（経歴・発信内容・関係性の整理と信用リスク把握）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">海外・対中ビジネスリスク調査（政治・規制・資本・現地環境）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">SNS・WEB情報分析（評判・炎上リスク・影響力の横断把握）</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="aspect-ratio: 4/3; background: rgba(184,149,90,0.06); border: 1px solid rgba(184,149,90,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(184,149,90,0.3); letter-spacing: 0.05em;">OSINT</span>
+        </div>
+        <div class="detail-strengths">
+          <div class="detail-strengths-label">強み・特徴</div>
+          <div class="detail-strength-item">公開情報のみを用いた適法・適正な調査</div>
+          <div class="detail-strength-item">探偵業届出済みの実務体制</div>
+          <div class="detail-strength-item">ジャーナリズム視点による深度ある分析</div>
+          <div class="detail-strength-item">SNS解析×国際情勢分析の独自手法</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="detail-panel" id="panel-2">
+      <div>
+        <div class="section-label" style="margin-bottom: 0.5rem;">03 · News & Media</div>
+        <h3 style="font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 400; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em;">ニュース配信部門</h3>
+        <p style="font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 2; letter-spacing: 0.03em;">政治・社会・安全保障分野を中心に、独自の分析と視点に基づいた情報発信を行います。背景・構造・論点までをわかりやすく届けることで、視聴者にとって真に価値ある情報提供を目指します。</p>
+        <div class="detail-features">
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">政治・選挙の最新動向（国政・地方・選挙情勢をタイムリーに解説）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">国際情勢・安全保障分析（地政学的論点・各国動向を整理）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">中国・ロシア・共産圏の解説（背景・構造を継続的に分析・発信）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">社会問題・報道されにくいテーマの独自視点解説</div></div>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.3); letter-spacing: 0.06em;">YouTube · note にて配信中</p>
+      </div>
+      <div>
+        <div style="aspect-ratio: 4/3; background: rgba(184,149,90,0.06); border: 1px solid rgba(184,149,90,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(184,149,90,0.3); letter-spacing: 0.05em;">News & Media</span>
+        </div>
+        <div class="detail-strengths">
+          <div class="detail-strengths-label">強み・特徴</div>
+          <div class="detail-strength-item">調査報道に基づく独自情報</div>
+          <div class="detail-strength-item">シンクタンク部門との連携分析</div>
+          <div class="detail-strength-item">わかりやすさと専門性の両立</div>
+          <div class="detail-strength-item">継続的発信による社会への提言</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="detail-panel" id="panel-3">
+      <div>
+        <div class="section-label" style="margin-bottom: 0.5rem;">04 · Imperial Studies</div>
+        <h3 style="font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 400; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em;">皇室・皇位継承問題 研究</h3>
+        <p style="font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 2; letter-spacing: 0.03em;">皇室制度および皇位継承問題について、歴史・制度・政治的背景を踏まえた多角的な分析を行います。感情論や断片的情報に流されることなく、冷静かつ客観的な視点から論点を整理します。</p>
+        <div class="detail-features">
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">皇位継承制度の分析（現行制度の課題・各種制度案の比較検討）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">政治動向・世論分析（国会議論・政府方針・報道傾向の整理）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">歴史・制度研究（皇室制度の歴史的背景と継承原則の基礎研究）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">YouTube・noteを通じた論点整理と継続発信</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="aspect-ratio: 4/3; background: rgba(184,149,90,0.06); border: 1px solid rgba(184,149,90,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(184,149,90,0.3); letter-spacing: 0.05em;">Imperial Studies</span>
+        </div>
+        <div class="detail-strengths">
+          <div class="detail-strengths-label">強み・特徴</div>
+          <div class="detail-strength-item">政治・制度・社会の三視点による多角的分析</div>
+          <div class="detail-strength-item">感情論に偏らない客観的考察</div>
+          <div class="detail-strength-item">政治・安全保障分野との連携による立体的な考察</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 4 -->
+    <div class="detail-panel" id="panel-4">
+      <div>
+        <div class="section-label" style="margin-bottom: 0.5rem;">05 · Divination & Counseling</div>
+        <h3 style="font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 400; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em;">占い・カウンセリング部門</h3>
+        <p style="font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 2; letter-spacing: 0.03em;">人の悩みや迷いに、静かに寄り添うこと。心の整理と、前向きな一歩を支えること。情報や技術だけでは届かない、人の感情や直感にも丁寧に目を向けながら、「安心」と「気づき」をお届けします。</p>
+        <div class="detail-features">
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">占いセッション（東洋占術・西洋占星術など多様な手法による気づきの提供）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">カウンセリング（対話を通じた思考と感情の整理）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">人生・進路相談（仕事・人間関係・将来の選択の丁寧なサポート）</div></div>
+          <div class="detail-feature"><div class="detail-feature-dot"></div><div class="detail-feature-text">オンライン対応（全国からご利用いただけるオンラインセッション）</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="aspect-ratio: 4/3; background: rgba(184,149,90,0.06); border: 1px solid rgba(184,149,90,0.18); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: rgba(184,149,90,0.3); letter-spacing: 0.05em;">Counseling</span>
+        </div>
+        <div class="detail-strengths">
+          <div class="detail-strengths-label">強み・特徴</div>
+          <div class="detail-strength-item">感情・直感・論理を組み合わせた総合的なアプローチ</div>
+          <div class="detail-strength-item">安心して話せる丁寧な対話</div>
+          <div class="detail-strength-item">占いとカウンセリングの専門的な融合</div>
+          <div class="detail-strength-item">一人ひとりに寄り添う個別対応</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company">
+  <div class="section-inner">
+    <div class="section-label">Company</div>
+    <h2 class="section-heading">会社概要</h2>
+    <div class="company-grid">
+      <div>
+        <p class="company-side-text">誠実・客観・継続。この三つの姿勢を軸に、情報の真価を社会に届けます。</p>
+        <p class="company-side-small">公開情報分析の専門企業として、法令を遵守した適正な調査・分析・情報発信に取り組んでいます。</p>
+      </div>
+      <div>
+        <table class="company-table">
+          <tr>
+            <td>商号</td>
+            <td>株式会社リオンヌ</td>
+          </tr>
+          <tr>
+            <td>所在地</td>
+            <td>〒170-0004<br>東京都豊島区北大塚１－１５－１８－５０３</td>
+          </tr>
+          <tr>
+            <td>代表取締役</td>
+            <td>篠原　由佳</td>
+          </tr>
+          <tr>
+            <td>事業内容</td>
+            <td>シンクタンク事業 ／ OSINT調査事業<br>ニュース配信事業 ／ 皇室・皇位継承問題研究<br>占い・カウンセリング事業</td>
+          </tr>
+          <tr>
+            <td>お問い合わせ</td>
+            <td><a href="mailto:info@lionnne.jp" style="color: var(--gold); text-decoration: none;">info@lionnne.jp</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="section-label" style="justify-content: center; color: var(--gold);">Contact</div>
+      <h2 class="section-heading section-heading-white">お問い合わせ</h2>
+      <p class="section-lead section-lead-white" style="margin: 1.2rem auto 0; text-align: center;">
+        調査・分析のご依頼、メディア掲載・出演のご相談、各種サービスのお問い合わせはメールにてお受けしております。
+      </p>
+      <a href="mailto:info@lionnne.jp" class="contact-email">info@lionnne.jp</a>
+      <p class="contact-note">
+        お問い合わせいただいた内容は、営業日3日以内にご返信いたします。<br>
+        秘密保持が必要なご相談も安心してご連絡ください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">株式会社リオンヌ</span>
+    <span class="footer-copy">© 2025 Lionne Inc. All Rights Reserved.</span>
+  </div>
+</footer>
+
+<script>
+function showTab(idx) {
+  document.querySelectorAll('.detail-tab').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.detail-panel').forEach((p, i) => {
+    p.classList.toggle('active', i === idx);
+  });
+}
+</script>
+</body>
+</html>
